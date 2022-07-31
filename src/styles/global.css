@@ -10,3 +10,7 @@ body {
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", sans-serif;
 }
+
+html.dark body {
+  @apply bg-slate-900;
+}
