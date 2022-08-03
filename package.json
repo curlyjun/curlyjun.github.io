@@ -33,6 +33,7 @@
     "@tailwindcss/typography": "^0.5.4",
     "autoprefixer": "^10.4.7",
     "gatsby-plugin-postcss": "^5.19.0",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "tailwindcss": "^3.1.6"
@@ -52,6 +53,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
+    "deploy": "gatsby build && gh-pages -d public",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
