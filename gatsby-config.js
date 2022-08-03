@@ -6,9 +6,9 @@ module.exports = {
       summary: `프론트엔드 개발자`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    siteUrl: `https://curlyjun.github.io/`,
     social: {
-      twitter: `kylemathews`,
+      // twitter: `kylemathews`,
     },
   },
   plugins: [
@@ -17,7 +17,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
+        path: `${__dirname}/content`,
         name: `blog`,
       },
     },

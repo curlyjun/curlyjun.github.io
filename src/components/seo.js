@@ -31,7 +31,9 @@ const Seo = ({ description, lang, title, children }) => {
 
   return (
     <>
-      <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
+      <title>
+        {defaultTitle ? `${title ? `${title} | ` : ``}${defaultTitle}` : title}
+      </title>
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
@@ -54,7 +56,7 @@ Seo.defaultProps = {
 
 Seo.propTypes = {
   description: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default Seo
