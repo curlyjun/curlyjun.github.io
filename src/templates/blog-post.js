@@ -4,34 +4,36 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import TableOfContents from "../components/TableOfContents"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
   location,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
+  const thumbnail = getImage(post.frontmatter.thumbnail)
 
   return (
     <Layout location={location} title={siteTitle}>
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-      <nav className="blog-post-nav">
+      <div className="flex max-w-5xl mx-auto">
+        <article className="prose dark:prose-invert max-w-3xl w-full">
+          <header>
+            <GatsbyImage image={thumbnail} className="mb-4" />
+            <h1>{post.frontmatter.title}</h1>
+            <p>{post.frontmatter.date}</p>
+          </header>
+
+          <section dangerouslySetInnerHTML={{ __html: post.html }} />
+          <hr />
+        </article>
+        {post.tableOfContents && (
+          <aside className="relative w-64 hidden lg:block">
+            <TableOfContents contents={post.tableOfContents} />
+          </aside>
+        )}
+      </div>
+      {/* <nav>
         <ul
           style={{
             display: `flex`,
@@ -56,7 +58,8 @@ const BlogPostTemplate = ({
             )}
           </li>
         </ul>
-      </nav>
+      </nav> */}
+      <footer>{/* <Bio /> */}</footer>
     </Layout>
   )
 }
@@ -88,10 +91,16 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
+        date(formatString: "M월 D일, YYYY")
         title
-        date(formatString: "MMMM DD, YYYY")
         description
+        thumbnail {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
       }
+      tableOfContents
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
       fields {

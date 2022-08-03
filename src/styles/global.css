@@ -14,3 +14,21 @@ body {
 html.dark body {
   @apply bg-slate-900;
 }
+
+.table-of-contents {
+  max-height: calc(100vh - 7rem);
+  overflow: auto;
+}
+
+.table-of-contents::before {
+  content: "CONTENTS";
+  @apply border-b-2 border-b-slate-200 font-bold;
+}
+
+.table-of-contents ul ul {
+  @apply mx-4;
+}
+
+.table-of-contents a {
+  @apply inline-block ml-1 text-sm px-1 transition-all hover:border-b-slate-200 hover:border-b hover:font-semibold;
+}
