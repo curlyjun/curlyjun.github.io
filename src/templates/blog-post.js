@@ -17,7 +17,7 @@ const BlogPostTemplate = ({
   return (
     <Layout location={location} title={siteTitle}>
       <div className="flex max-w-5xl mx-auto">
-        <article className="prose dark:prose-invert max-w-3xl w-full">
+        <article className="prose dark:prose-invert max-w-3xl w-full prose-a:text-violet-500">
           <header>
             <GatsbyImage image={thumbnail} className="mb-4" />
             <h1>{post.frontmatter.title}</h1>
@@ -64,11 +64,19 @@ const BlogPostTemplate = ({
   )
 }
 
-export const Head = ({ data: { markdownRemark: post } }) => {
+export const Head = ({
+  data: {
+    markdownRemark: post,
+    site: {
+      siteMetadata: { siteUrl },
+    },
+  },
+}) => {
   return (
     <Seo
       title={post.frontmatter.title}
       description={post.frontmatter.description || post.excerpt}
+      thumbnail={`${siteUrl}${post.frontmatter.thumbnail.childImageSharp.gatsbyImageData.images.fallback.src}`}
     />
   )
 }
@@ -84,6 +92,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     markdownRemark(id: { eq: $id }) {
