@@ -5,10 +5,16 @@ const ThemeToggle = () => {
 
   useEffect(() => {
     const localStorageTheme = localStorage.getItem("theme")
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light"
+    const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    const systemTheme = darkQuery.matches ? "dark" : "light"
+
+    darkQuery.addEventListener("change", e => {
+      if (e.matches) {
+        setTheme("dark")
+      } else {
+        setTheme("light")
+      }
+    })
 
     setTheme(localStorageTheme || systemTheme)
   }, [])
