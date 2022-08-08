@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css");
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -8,7 +8,7 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: #abb2bf;
   background: none;
-  font-family: Hack, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: "Fira Code", Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -177,10 +177,8 @@ pre.line-numbers > code {
 
 /* custom */
 pre[class*="language-"] {
+  padding-top: 2rem;
   border-radius: 0.5rem;
-}
-pre[class*="language-"]::before {
-  content: "하이";
 }
 
 pre[class*="language-"].line-numbers .line-numbers-rows {
@@ -188,4 +186,32 @@ pre[class*="language-"].line-numbers .line-numbers-rows {
   padding: 1rem;
   padding-right: 0;
   border-right: 0;
+}
+
+div.gatsby-highlight {
+  position: relative;
+}
+
+div.gatsby-highlight[data-language]:before {
+  content: attr(data-language);
+  color: #fff;
+  background-color: #616161;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  font-size: 0.9em;
+  border-radius: 0 0 0.25rem 0.25rem;
+  padding: 0 0.7rem;
+  z-index: 1;
+}
+
+.gatsby-highlight-code-line {
+  background-color: #004d8d;
+  border-left: 0.35em solid #0687f0;
+  display: block;
+  margin-left: -14px;
+  margin-right: -14px;
+  padding-left: 9px;
+  padding-right: 1em;
 }

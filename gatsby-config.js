@@ -53,7 +53,7 @@ module.exports = {
           },
           {
             resolve: `gatsby-remark-prismjs`,
-            options: { showLineNumbers: true },
+            // options: { showLineNumbers: true },
           },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
