@@ -8,7 +8,6 @@ module.exports = {
         DEFAULT: {
           css: {
             '.prose :where(code):not(:where([class~="not-prose"] *))': {
-              background: "red",
               "&::after, &::before": {
                 content: "none",
               },
