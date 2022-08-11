@@ -12,6 +12,12 @@ module.exports = {
                 content: "none",
               },
             },
+            '.prose :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))':
+              {
+                "&::after, &::before": {
+                  content: "none",
+                },
+              },
           },
         },
       },
