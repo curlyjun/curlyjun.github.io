@@ -17,7 +17,7 @@ const BlogPostTemplate = ({
   return (
     <Layout location={location} title={siteTitle}>
       <div className="flex max-w-5xl mx-auto">
-        <article className="prose dark:prose-invert max-w-3xl w-full prose-a:text-violet-500">
+        <article className="prose dark:prose-invert max-w-3xl w-full prose-a:text-violet-500 prose-blockquote:border-l-violet-300 prose-blockquote:bg-slate-100 prose-blockquote:rounded-r-sm prose-blockquote:py-1 dark:prose-blockquote:bg-slate-800">
           <header>
             <GatsbyImage image={thumbnail} className="mb-4" />
             <h1>{post.frontmatter.title}</h1>
