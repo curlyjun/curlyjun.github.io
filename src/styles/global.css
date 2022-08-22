@@ -33,3 +33,7 @@ html.dark body {
 .table-of-contents a {
   @apply inline-block ml-1 text-sm px-1 transition-all hover:border-b-slate-200 hover:border-b hover:font-semibold;
 }
+
+.prose .language-text {
+  @apply bg-violet-100 text-black p-[0.15rem] dark:bg-slate-700 dark:text-violet-200;
+}
